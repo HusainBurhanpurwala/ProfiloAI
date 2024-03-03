@@ -1,5 +1,18 @@
 ###### Packages Used ######
-import streamlit as st # core package used in this project
+import streamlit as st
+import nltk
+
+# Download NLTK data if not already downloaded
+try:
+    nltk.data.find('stopwords')
+except LookupError:
+    try:
+        nltk.download('stopwords')
+    except socket.gaierror:
+        st.error("Unable to download NLTK data. Please check your internet connection and try again.")
+
+# Now you can import the ResumeParser
+from pyresparser import ResumeParser
 import pandas as pd
 import base64, random
 import time,datetime
